@@ -22,7 +22,7 @@ const Navigation = () => {
             <div className="p-2 gradient-primary rounded-lg">
               <Shield className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold gradient-primary bg-clip-text text-transparent">
+            <span className="text-xl font-bold text-primary">
               Safar Suraksha
             </span>
           </div>
