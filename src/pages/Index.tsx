@@ -19,7 +19,7 @@ const Index = () => {
       <footer className="bg-primary text-primary-foreground py-12 px-4">
         <div className="container mx-auto">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">Smart Tourist Safety</h3>
+            <h3 className="text-2xl font-bold mb-4">Safar Suraksha</h3>
             <p className="text-primary-foreground/80 mb-6">
               Protecting travelers with advanced technology and blockchain security
             </p>
@@ -29,7 +29,7 @@ const Index = () => {
               <a href="#" className="hover:text-primary-foreground/80 transition-smooth">Contact Support</a>
             </div>
             <div className="mt-6 pt-6 border-t border-primary-foreground/20 text-primary-foreground/60 text-xs">
-              © 2025 Smart Tourist Safety System. Powered by Government of India.
+              © 2025 Safar Suraksha System. Powered by Government of India.
             </div>
           </div>
         </div>

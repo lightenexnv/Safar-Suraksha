@@ -10,7 +10,7 @@ const Hero = () => {
         <div className="container mx-auto text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-              Smart Tourist Safety
+              Safar Suraksha
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90">
               Advanced AI-powered monitoring and blockchain-secured digital IDs 
