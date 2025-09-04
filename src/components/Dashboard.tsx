@@ -42,30 +42,30 @@ const Dashboard = () => {
   };
 
   return (
-    <section id="dashboard" className="py-20 px-4 bg-background">
+    <section id="dashboard" className="py-16 sm:py-20 px-4 bg-background">
       <div className="container mx-auto max-w-7xl">
-        <div className="mb-8">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Authority Dashboard
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground">
             Real-time monitoring and incident response system
           </p>
         </div>
 
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 lg:w-fit">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="monitoring">Live Monitoring</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="incidents">Incidents</TabsTrigger>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:w-fit h-auto p-1">
+            <TabsTrigger value="overview" className="text-xs sm:text-sm py-2 px-2 sm:px-3">Overview</TabsTrigger>
+            <TabsTrigger value="monitoring" className="text-xs sm:text-sm py-2 px-2 sm:px-3">Monitoring</TabsTrigger>
+            <TabsTrigger value="analytics" className="text-xs sm:text-sm py-2 px-2 sm:px-3">Analytics</TabsTrigger>
+            <TabsTrigger value="incidents" className="text-xs sm:text-sm py-2 px-2 sm:px-3">Incidents</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="overview" className="space-y-6">
+          <TabsContent value="overview" className="space-y-4 sm:space-y-6">
             {/* Stats Overview */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <Card className="shadow-medium border-0 gradient-primary text-white">
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm opacity-90">Active Tourists</p>
@@ -81,7 +81,7 @@ const Dashboard = () => {
               </Card>
 
               <Card className="shadow-medium border-0 gradient-safety text-white">
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm opacity-90">Safe Zones</p>
@@ -94,7 +94,7 @@ const Dashboard = () => {
               </Card>
 
               <Card className="shadow-medium border-0 bg-warning text-warning-foreground">
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm opacity-90">Active Alerts</p>
@@ -107,7 +107,7 @@ const Dashboard = () => {
               </Card>
 
               <Card className="shadow-medium border-0 bg-success text-success-foreground">
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm opacity-90">Response Time</p>
@@ -132,17 +132,17 @@ const Dashboard = () => {
               <CardContent>
                 <div className="space-y-3">
                   {recentAlerts.map((alert) => (
-                    <div key={alert.id} className="flex items-center justify-between p-3 border rounded-lg hover:shadow-soft transition-smooth">
-                      <div className="flex items-center space-x-3">
-                        <Badge className={`${getSeverityColor(alert.severity)} text-white`}>
+                    <div key={alert.id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 border rounded-lg hover:shadow-soft transition-smooth gap-3 sm:gap-0">
+                      <div className="flex items-center space-x-3 flex-1">
+                        <Badge className={`${getSeverityColor(alert.severity)} text-white text-xs`}>
                           {alert.severity}
                         </Badge>
-                        <div>
-                          <p className="font-medium text-card-foreground">{alert.message}</p>
-                          <p className="text-sm text-muted-foreground">{alert.time}</p>
+                        <div className="min-w-0 flex-1">
+                          <p className="font-medium text-card-foreground text-sm sm:text-base break-words">{alert.message}</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground">{alert.time}</p>
                         </div>
                       </div>
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="w-full sm:w-auto min-h-[40px]">
                         View Details
                       </Button>
                     </div>
@@ -152,9 +152,9 @@ const Dashboard = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="monitoring" className="space-y-6">
+          <TabsContent value="monitoring" className="space-y-4 sm:space-y-6">
             {/* Live Tourist Monitoring */}
-            <div className="grid lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
               <div className="lg:col-span-2">
                 <Card className="shadow-medium">
                   <CardHeader>
@@ -165,7 +165,7 @@ const Dashboard = () => {
                     <CardDescription>Real-time tourist location monitoring</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="h-96 bg-muted rounded-lg flex items-center justify-center">
+                    <div className="h-64 sm:h-96 bg-muted rounded-lg flex items-center justify-center">
                       <div className="text-center">
                         <MapPin className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
                         <p className="text-lg font-semibold text-card-foreground">Interactive Map</p>
@@ -205,7 +205,7 @@ const Dashboard = () => {
             </div>
           </TabsContent>
 
-          <TabsContent value="analytics" className="space-y-6">
+          <TabsContent value="analytics" className="space-y-4 sm:space-y-6">
             <Card className="shadow-medium">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
@@ -226,7 +226,7 @@ const Dashboard = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="incidents" className="space-y-6">
+          <TabsContent value="incidents" className="space-y-4 sm:space-y-6">
             <Card className="shadow-medium">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">

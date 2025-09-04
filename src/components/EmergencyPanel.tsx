@@ -56,18 +56,18 @@ const EmergencyPanel = () => {
   ];
 
   return (
-    <section id="emergency" className="py-20 px-4 bg-background">
+    <section id="emergency" className="py-16 sm:py-20 px-4 bg-background">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Emergency Response Center
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground px-2 sm:px-0">
             Instant help when you need it most
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* SOS Button */}
           <div className="lg:col-span-1">
             <Card className="shadow-emergency border-0 bg-emergency text-emergency-foreground">
@@ -80,16 +80,16 @@ const EmergencyPanel = () => {
                   Press and hold for 3 seconds to activate
                 </CardDescription>
               </CardHeader>
-              <CardContent className="flex flex-col items-center space-y-6">
+              <CardContent className="flex flex-col items-center space-y-4 sm:space-y-6">
                 {emergencyActive && countdown > 0 ? (
                   <>
-                    <div className="w-32 h-32 rounded-full border-4 border-white flex items-center justify-center animate-pulse">
-                      <span className="text-4xl font-bold">{countdown}</span>
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white flex items-center justify-center animate-pulse">
+                      <span className="text-3xl sm:text-4xl font-bold">{countdown}</span>
                     </div>
                     <Button 
                       onClick={handleCancel}
                       variant="secondary"
-                      className="w-full"
+                      className="w-full min-h-[48px]"
                     >
                       Cancel Emergency
                     </Button>
@@ -99,11 +99,11 @@ const EmergencyPanel = () => {
                     <Button
                       onClick={handleSOSPress}
                       size="lg"
-                      className="w-32 h-32 rounded-full bg-white text-emergency hover:bg-white/90 text-2xl font-bold shadow-strong transition-bounce hover:scale-105"
+                      className="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-white text-emergency hover:bg-white/90 text-xl sm:text-2xl font-bold shadow-strong transition-bounce hover:scale-105 min-h-[112px] sm:min-h-[128px]"
                     >
                       SOS
                     </Button>
-                    <p className="text-center text-emergency-foreground/80 text-sm">
+                    <p className="text-center text-emergency-foreground/80 text-sm px-2">
                       Tap once to activate emergency protocol
                     </p>
                   </>
@@ -141,15 +141,15 @@ const EmergencyPanel = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {emergencyNumbers.map((contact) => (
-                    <Card key={contact.number} className="p-4 hover:shadow-medium transition-smooth cursor-pointer border border-muted">
-                      <div className="flex items-center justify-between">
+                    <Card key={contact.number} className="p-3 sm:p-4 hover:shadow-medium transition-smooth cursor-pointer border border-muted">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
                         <div>
-                          <h3 className="font-semibold text-card-foreground">{contact.label}</h3>
-                          <p className="text-2xl font-bold text-primary">{contact.number}</p>
+                          <h3 className="font-semibold text-card-foreground text-sm sm:text-base">{contact.label}</h3>
+                          <p className="text-xl sm:text-2xl font-bold text-primary">{contact.number}</p>
                         </div>
-                        <Button size="sm" className="gradient-primary">
+                        <Button size="sm" className="gradient-primary w-full sm:w-auto min-h-[40px]">
                           Call Now
                         </Button>
                       </div>
@@ -168,7 +168,7 @@ const EmergencyPanel = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-2">
                     <h4 className="font-semibold text-card-foreground">In Case of Emergency:</h4>
                     <ul className="space-y-1 text-muted-foreground">

@@ -39,18 +39,18 @@ const TouristRegistration = () => {
   };
 
   return (
-    <section id="register" className="py-20 px-4 bg-background">
+    <section id="register" className="py-16 sm:py-20 px-4 bg-background">
       <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-foreground mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Tourist Registration
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-lg sm:text-xl text-muted-foreground px-2 sm:px-0">
             Register to receive your blockchain-secured Digital Tourist ID
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {/* Registration Form */}
           <div className="md:col-span-2">
             <Card className="shadow-medium border-0">
@@ -65,7 +65,7 @@ const TouristRegistration = () => {
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="fullName">Full Name</Label>
                       <Input
@@ -73,6 +73,7 @@ const TouristRegistration = () => {
                         placeholder="Enter your full name"
                         value={formData.fullName}
                         onChange={(e) => handleInputChange("fullName", e.target.value)}
+                        className="min-h-[48px]"
                         required
                       />
                     </div>
@@ -84,12 +85,13 @@ const TouristRegistration = () => {
                         placeholder="your@email.com"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
+                        className="min-h-[48px]"
                         required
                       />
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number</Label>
                       <Input
@@ -97,6 +99,7 @@ const TouristRegistration = () => {
                         placeholder="+91 12345 67890"
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
+                        className="min-h-[48px]"
                         required
                       />
                     </div>
@@ -118,7 +121,7 @@ const TouristRegistration = () => {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="passport">Passport Number</Label>
                       <Input
@@ -126,6 +129,7 @@ const TouristRegistration = () => {
                         placeholder="A12345678"
                         value={formData.passportNumber}
                         onChange={(e) => handleInputChange("passportNumber", e.target.value)}
+                        className="min-h-[48px]"
                         required
                       />
                     </div>
@@ -137,6 +141,7 @@ const TouristRegistration = () => {
                         placeholder="7"
                         value={formData.visitDuration}
                         onChange={(e) => handleInputChange("visitDuration", e.target.value)}
+                        className="min-h-[48px]"
                         required
                       />
                     </div>
@@ -149,6 +154,7 @@ const TouristRegistration = () => {
                       placeholder="Emergency contact name and phone"
                       value={formData.emergencyContact}
                       onChange={(e) => handleInputChange("emergencyContact", e.target.value)}
+                      className="min-h-[48px]"
                       required
                     />
                   </div>
@@ -164,7 +170,7 @@ const TouristRegistration = () => {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full gradient-primary text-lg py-3">
+                  <Button type="submit" className="w-full gradient-primary text-base sm:text-lg py-4 min-h-[48px]">
                     Generate Digital Tourist ID
                   </Button>
                 </form>
