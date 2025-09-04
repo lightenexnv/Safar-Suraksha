@@ -3,8 +3,22 @@ import Hero from "@/components/Hero";
 import TouristRegistration from "@/components/TouristRegistration";
 import Dashboard from "@/components/Dashboard";
 import EmergencyPanel from "@/components/EmergencyPanel";
+import { useAuth } from "@/hooks/useAuth";
+import { Loader2 } from "lucide-react";
 
 const Index = () => {
+  const { loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-hero">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-white" />
+          <p className="text-white/80">Loading Safar Suraksha...</p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen">
       <Navigation />

@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { Shield, Menu, X, MapPin, AlertTriangle, Settings, Users } from "lucide-react";
+import { Shield, Menu, X, MapPin, AlertTriangle, Settings, Users, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, signOut } = useAuth();
 
   const navItems = [
     { label: "Dashboard", icon: MapPin, href: "#dashboard" },
@@ -43,12 +46,36 @@ const Navigation = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-3">
-            <Button variant="outline" size="sm">
-              Authority Login
-            </Button>
-            <Button size="sm" className="gradient-primary">
-              Get Started
-            </Button>
+            {user ? (
+              <div className="flex items-center space-x-3">
+                <span className="text-sm text-muted-foreground">
+                  Welcome, {user.email?.split('@')[0]}
+                </span>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={signOut}
+                  className="flex items-center gap-2"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Link to="/auth">
+                  <Button variant="outline" size="sm">
+                    Authority Login
+                  </Button>
+                </Link>
+                <Link to="/auth">
+                  <Button size="sm" className="gradient-primary flex items-center gap-2">
+                    <User className="w-4 h-4" />
+                    Get Started
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -72,12 +99,38 @@ const Navigation = () => {
                   </a>
                 ))}
                 <div className="border-t pt-4 space-y-2">
-                  <Button variant="outline" className="w-full">
-                    Authority Login
-                  </Button>
-                  <Button className="w-full gradient-primary">
-                    Get Started
-                  </Button>
+                  {user ? (
+                    <div className="space-y-3">
+                      <div className="text-sm text-muted-foreground px-3">
+                        Welcome, {user.email?.split('@')[0]}
+                      </div>
+                      <Button 
+                        variant="outline" 
+                        className="w-full flex items-center gap-2"
+                        onClick={() => {
+                          signOut();
+                          setIsOpen(false);
+                        }}
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign Out
+                      </Button>
+                    </div>
+                  ) : (
+                    <>
+                      <Link to="/auth" onClick={() => setIsOpen(false)}>
+                        <Button variant="outline" className="w-full">
+                          Authority Login
+                        </Button>
+                      </Link>
+                      <Link to="/auth" onClick={() => setIsOpen(false)}>
+                        <Button className="w-full gradient-primary flex items-center gap-2">
+                          <User className="w-4 h-4" />
+                          Get Started
+                        </Button>
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </SheetContent>
